@@ -1,56 +1,62 @@
+let userScore = 0, compScore = 0;
+
 function playRound(playerSelection, computerSelection) {
 
-   // IF USER IS ROCK
-   if (playerSelection.toLowerCase() === 'rock' &&
-      computerSelection === 'scissors') {
-      return 'You Win!'
-   } else if (playerSelection.toLowerCase() === 'rock' &&
-   computerSelection === 'rock') {
-   return 'Try Again!'
-   } else if (playerSelection.toLowerCase() === 'rock' &&
-   computerSelection === 'paper') {
-   return 'Computer Wins!'
-   }
-
-   // IF USER IS SCISSORS
-   else if (playerSelection.toLowerCase() === 'scissors' &&
-      computerSelection === 'paper') {
-      return 'You Win!'
-   } else if (playerSelection.toLowerCase() === 'scissors' &&
-   computerSelection === 'scissors') {
-   return 'Try Again!'
-   } else if (playerSelection.toLowerCase() === 'scissors' &&
-   computerSelection === 'rock') {
-   return 'Computer Wins!'
-   }
-
-   // IF USER IS PAPER
-   else if (playerSelection.toLowerCase() === 'paper' &&
-      computerSelection === 'rock') {
-      return 'You Win!'
-   } else if (playerSelection.toLowerCase() === 'paper' &&
-   computerSelection === 'paper') {
-   return 'Try Again!'
-   } else if (playerSelection.toLowerCase() === 'paper' &&
-   computerSelection === 'scissors') {
-   return 'Computer Wins!'
-   } else {
-      return 'Please input rock, paper or scissors';
-   }
+  // IF USER IS ROCK
+  if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'scissors') {
+    userScore++;
+  } else if (playerSelection.toLowerCase() === 'rock' &&  computerSelection === 'paper') {
+    compScore++;
+  }
+    // IF USER IS SCISSORS
+  else if (playerSelection.toLowerCase() === 'scissors' &&  computerSelection === 'paper') {
+    userScore++;
+  } else if (playerSelection.toLowerCase() === 'scissors' &&  computerSelection === 'rock') {
+    compScore++;
+  }
+  // IF USER IS PAPER
+  else if (playerSelection.toLowerCase() === 'paper' &&  computerSelection === 'rock') {
+    userScore++;
+  } else if (playerSelection.toLowerCase() === 'paper' &&  computerSelection === 'scissors') {
+    compScore++;
+  } 
 
 }
 
+// GENERATE RANDOM COMPUTER CHOICE
 function computerPlay () {
-   let hand = Math.ceil(Math.random() * 3);
-   if (hand === 1) {
-      return 'rock';
-   } else if (hand === 2) {
-      return 'paper';
-   } else {
-      return 'scissors';
-   }
+  let hand = Math.ceil(Math.random() * 3);
+  if (hand === 1) {
+    return 'rock';
+  } else if (hand === 2) {
+    return 'paper';
+  } else {
+    return 'scissors';
+  }
 }
 
-const playerSelection = 'PAPER';
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+  let playerSelection;
+  let computerSelection;
+
+  for(let i = 0; i < 5; i++) {
+    playerSelection = prompt('Rock, paper or scissors?');
+    computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+  }
+  console.log(`Final score is user: ${userScore} | comp: ${compScore}`);
+}
+
+game()
+
+if(userScore > compScore) {
+  console.log('You won the game');
+} else if(userScore < compScore) {
+  console.log('Computer won the game');
+} else {
+  console.log(`It's a tie!`);
+}
+
+
+
+
