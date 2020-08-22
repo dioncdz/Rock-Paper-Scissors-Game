@@ -3,10 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <h1>Check the console</h1>
+    <div id="container">
+      <h2 id="result">Start the game!!</h2>
+      <div id="player-1" class="child">
+        <h3>Player 1</h3>
+        <div class="btn">
+          <button class="buttons rock">Rock</button>
+          <button class="buttons paper">Paper</button>
+          <button class="buttons scissors">Scissors</button>
+        </div>
+      </div>
+      <div id="player-2" class="child">
+        <h3>Player 2</h3>
+        <div class="computer-select">Rock</div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
